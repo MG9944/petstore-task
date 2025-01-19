@@ -1,0 +1,19 @@
+services:
+    app:
+        build: .
+        ports:
+            - "8000:80" # Port to access the application from the browser
+        volumes:
+            - .:/var/www/html # Mount local application folder to container
+            - /var/www/html/storage # Storage for Laravel's storage folder
+            - /var/www/html/bootstrap/cache # Storage for Laravel's cache
+        networks:
+            - app_network
+        mem_limit: "2G"
+        cpus: "1"
+        environment:
+            - VIRTUAL_HOST=localhost # Use localhost for local development
+
+networks:
+    app_network:
+        driver: bridge
