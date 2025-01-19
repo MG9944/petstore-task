@@ -9,7 +9,7 @@ use Illuminate\Http\Client\Response;
 
 interface HttpClientInterface
 {
-    public function get(string $url, array $query = []): Response;
+    public function get(string $url): Response;
 
     public function post(string $url, array $data = []): Response;
 

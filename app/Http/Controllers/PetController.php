@@ -34,19 +34,9 @@ class PetController extends Controller
                 $request->input('searchId'),
                 $request->input('searchStatus')
             );
-
-            $pets = json_encode($response->body());
-            if ($pets !== null && isset($pets['id'])) {
-                $pets = [$pets];
-            } elseif (isset($pets['message']) || $pets === null) {
-                $pets = [];
-            }
-
-
             return $this->handleHttpResponse(
                 $response,
-                trans_choice('pet.found', count($pets)),
-                ['pets' => $pets]
+                __('pet.found')
             );
         } catch (\Exception $e) {
 

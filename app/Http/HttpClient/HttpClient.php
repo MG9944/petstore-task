@@ -8,9 +8,9 @@ use Illuminate\Support\Facades\Http;
 
 class HttpClient implements HttpClientInterface
 {
-    public function get(string $url, array $query = []): Response
+    public function get(string $url): Response
     {
-        return Http::get($url, $query);
+        return Http::get($url);
     }
 
     public function post(string $url, array $data = []): Response
